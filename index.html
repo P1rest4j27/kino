@@ -3,81 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KinoDünyası - Pulsuz Filmlər</title>
+    <title>KinoDünyası - Serial və Filmlər</title>
     <style>
-        /* Ümumi qaranlıq tema */
+        /* Ümumi tünd tema və Arxa fon */
         body {
-            background-color: #0f0f0f;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            /* Arxa fonda Game of Thrones və digər serialların atmosferi */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), 
+                              url('https://images.alphacoders.com/605/605592.jpg'); 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            overflow-x: hidden;
         }
-        /* Naviqasiya */
+
+        /* Naviqasiya (Netflix stili) */
         header {
-            background-color: #1a1a1a;
+            background-color: rgba(0, 0, 0, 0.85);
             padding: 20px;
             text-align: center;
-            border-bottom: 2px solid #e50914;
+            border-bottom: 3px solid #e50914;
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
-        h1 { color: #e50914; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        
-        /* Filmlərin düzülüşü */
+
+        header h1 {
+            color: #e50914;
+            margin: 0;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Film konteyneri */
         .container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 40px 10px;
+            gap: 25px;
         }
-        /* Film kartı */
+
+        /* Film Kartları */
         .movie-card {
-            background-color: #1f1f1f;
-            margin: 15px;
-            width: 220px;
-            border-radius: 10px;
+            background-color: rgba(31, 31, 31, 0.9);
+            width: 200px;
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            border: 1px solid #333;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
+
         .movie-card:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4);
+            border-color: #e50914;
         }
+
         .movie-card img {
             width: 100%;
-            height: 320px;
+            height: 280px;
             object-fit: cover;
+            display: block;
         }
+
         .movie-info {
             padding: 15px;
-            text-align: left;
+            background: linear-gradient(to top, #1f1f1f, transparent);
         }
+
         .movie-info h3 {
             font-size: 16px;
-            margin: 0 0 5px 0;
-            color: #fff;
+            margin: 0 0 8px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
-        .movie-info span {
-            color: #e50914;
+
+        .rating {
+            color: #ffb400;
             font-weight: bold;
             font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
+
         .genre {
-            display: block;
-            color: #888;
+            color: #aaa;
             font-size: 12px;
             margin-top: 5px;
+            display: block;
+        }
+
+        /* Mobil üçün uyğunlaşma */
+        @media (max-width: 600px) {
+            .movie-card {
+                width: 160px;
+            }
+            header h1 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>AzKino</h1>
+    <h1>KinoDünyası</h1>
 </header>
 
 <div class="container">
@@ -85,8 +126,8 @@
         <img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" referrerpolicy="no-referrer" alt="Interstellar">
         <div class="movie-info">
             <h3>Interstellar</h3>
-            <span>8.7 IMDB</span>
-            <small class="genre">Elmi-Fantastika</small>
+            <div class="rating">⭐ 8.7</div>
+            <span class="genre">Elmi-Fantastika</span>
         </div>
     </div>
 
@@ -94,8 +135,8 @@
         <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg" referrerpolicy="no-referrer" alt="Inception">
         <div class="movie-info">
             <h3>Inception</h3>
-            <span>8.8 IMDB</span>
-            <small class="genre">Triller</small>
+            <div class="rating">⭐ 8.8</div>
+            <span class="genre">Triller, Aksiyon</span>
         </div>
     </div>
 
@@ -103,8 +144,20 @@
         <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwZC00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_.jpg" referrerpolicy="no-referrer" alt="The Batman">
         <div class="movie-info">
             <h3>The Batman</h3>
-            <span>7.8 IMDB</span>
-            <small class="genre">Aksiyon</small>
+            <div class="rating">⭐ 7.8</div>
+            <span class="genre">Cinayət, Dram</span>
+        </div>
+    </div>
+
+    <div class="movie-card">
+        <img src="https://m.media-amazon.com/images/M/MV5BNzZmOTU1N2QtMDEyS00ZGYxLWIxN2ItZDg2YjZlMTU4NTViXkEyXkFqcGdeQXVyNjU2NjA5NjM@._V1_.jpg" referrerpolicy="no-referrer" alt="Supernatural">
+        <div class="movie-info">
+            <h3>Supernatural</h3>
+            <div class="rating">⭐ 8.4</div>
+            <span class="genre">Serial, Fantaziya</span>
         </div>
     </div>
 </div>
+
+</body>
+</html>
